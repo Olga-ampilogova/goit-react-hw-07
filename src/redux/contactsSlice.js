@@ -10,26 +10,18 @@ const initialState = {
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  reducers: {
-  // addContact: (state, action) => {
-  //    state.items.push(action.payload);
-    },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAll.pending, (state) => {
-       
         state.loading = true;
-          // state.error = null;
       })
       .addCase(fetchAll.fulfilled, (state, action) => {
          state.loading = false;
          state.items = action.payload;
-        
       })
       .addCase(fetchAll.rejected, (state) => {
         state.loading = false;
         state.error = true;
-        // state.error = action.error.message;
       })
 
         .addCase(addContact.pending, (state) => {
@@ -60,6 +52,6 @@ export const contactsSlice = createSlice({
 });
 
 export const selectContacts = (state) => state.contacts.items;
-// console.log(selectContacts);
-
+export const selectLoading = (state) => state.contacts.loading;
+export const selectError = (state) => state.contacts.error;
 export default contactsSlice.reducer;

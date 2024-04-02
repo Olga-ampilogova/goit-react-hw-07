@@ -1,8 +1,6 @@
-//import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-// import { addContact } from "../../redux/contactsOps";
 import css from "./ContactForm.module.css";
 import { addContact } from "../../redux/contactsOps";
 const contactValidationSchema = Yup.object().shape({
@@ -14,7 +12,6 @@ const contactValidationSchema = Yup.object().shape({
     .matches(/^\d{3}-\d{2}-\d{2}$/, "Invalid phone number")
     .required("Required"),
 });
-// InputField component for handling individual input fields
 const InputField = ({ label, id, name, type }) => (
   <div className={css.inputField}>
     <label htmlFor={id} className={css.title}>
@@ -25,15 +22,13 @@ const InputField = ({ label, id, name, type }) => (
   </div>
 );
 
-// SubmitButton component
 const SubmitButton = ({ label }) => (
   <button type="submit" className={css.submitButton}>
     {label}
   </button>
 );
 
-// ContactForm component
-const ContactForm = () => {
+export default function ContactForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
@@ -71,6 +66,4 @@ const ContactForm = () => {
       </Formik>
     </div>
   );
-};
-
-export default ContactForm;
+}

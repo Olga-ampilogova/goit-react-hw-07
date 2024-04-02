@@ -18,15 +18,7 @@ export const filtersSlice = createSlice({
 export const { changeFilter } = filtersSlice.actions;
 export const selectNameFilter = state=>state.filters.name
 
-// export const visibleContact = createSelector(
-//   [selectContacts, selectNameFilter],
-//   (items, filter) => {
-//     return items.filter(({ name }) =>
-//       name.toLowerCase().includes(filter.toLowerCase().trim())
-//     );
-//   }
-// );
-export const visibleContact = createSelector(
+export const selectVisibleContact = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, filter) => {
     return contacts.filter(contact =>
