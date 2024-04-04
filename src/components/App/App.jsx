@@ -3,7 +3,7 @@ import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAll } from "../../redux/contactsOps";
+import { fetchContacts } from "../../redux/contactsOps";
 import { Loader } from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { selectError, selectLoading } from "../../redux/contactsSlice";
@@ -13,7 +13,7 @@ export default function App() {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   useEffect(() => {
-    dispatch(fetchAll());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
